@@ -12,4 +12,11 @@ import lombok.Data;
  */
 @Data
 public class PricePerDate {
+    private Date date;
+    private Integer endPrice;
+    private Integer increment;
+    private Integer startPrice;
+    private Integer maxPrice;
+    private Integer minPrice;
+    private Integer traceVolumn;
 }

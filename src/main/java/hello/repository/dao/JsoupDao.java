@@ -1,16 +1,12 @@
 package hello.repository.dao;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Repository;
-
-import hello.repository.model.StockDataPerTime;
 
 /**
  *

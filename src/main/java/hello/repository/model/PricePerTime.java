@@ -14,12 +14,12 @@ import lombok.Data;
  * @since 2017-11-06
  */
 @Data
-public class StockDataPerTime {
+public class PricePerTime {
 	private Date contractTime;
 	private Integer price;
 	private Integer increment;
 	private Integer sellPrice;
 	private Integer purchasePrice;
-	private Integer volume;
+	private Integer tradeVolume;
 	private Integer variance;
 }
