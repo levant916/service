@@ -3,7 +3,7 @@
 *.ipr
 *.ivs
 .idea/
-
+.gradle/
 # generated files
 target/
 bin/
