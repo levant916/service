@@ -1,9 +1,6 @@
-package hello.repository.model;
+package hello.business.model;
 
 import java.sql.Date;
-
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import lombok.Data;
 

@@ -1,7 +1,11 @@
-package hello.repository.dao;
+package hello.business;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Date;
 
+import org.apache.http.client.utils.URIBuilder;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,19 +19,27 @@ import org.springframework.stereotype.Repository;
  * @since 2017-11-06
  */
 @Repository
-public class JsoupDao {
+public class JsoupBO {
+	private static final String baseUrl2 = "http://finance.naver.com/item/sise_time.nhn";
 
 	public void getDataPerTime(String baseUrl) {
+
 		try {
-			Document doc = Jsoup.connect("http://finance.naver.com/item/sise_time.nhn?code=000660&thistime=20171103150000&page=8")
+			URI uri = new URIBuilder(baseUrl2)
+					.addParameter("code", "000660")
+					.addParameter("thistime", "20171103150000")
+					.addParameter("page", "8").build();
+			Document doc = Jsoup.connect(uri.toString())
 								.timeout(3000)
 								.get();
-			Elements result = doc.select("tr[onmouseover=mouseOver(this)]");
-			for(Element r : result) {
-				Elements r2 = r.children();
-				for(Element r3 : r2) {
-					System.out.println(r3.children().text());
+			Elements resultList = doc.select("tr[onmouseover=mouseOver(this)]");
+			for(Element result : resultList) {
+				Elements priceRow = result.children();
+				for(Element columnData : priceRow) {
+					String data = columnData.children().text();
+					System.out.print(data + " ");
 				}
+				System.out.println();
 			}
 //			Elements result = doc.select("span[class=tah p10 gray03]");
 //			for(Element r : result) {		// 체결 시각
@@ -42,6 +54,8 @@ public class JsoupDao {
 //				System.out.println(r.ownText());
 //			}
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 	}

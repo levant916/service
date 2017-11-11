@@ -1,4 +1,4 @@
-package hello.repository.model;
+package hello.business.model;
 
 public class Greeting {
 

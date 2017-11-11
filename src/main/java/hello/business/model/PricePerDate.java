@@ -1,4 +1,4 @@
-package hello.repository.model;
+package hello.business.model;
 
 import java.sql.Date;
 
