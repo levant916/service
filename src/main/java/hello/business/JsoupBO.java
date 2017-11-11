@@ -7,6 +7,7 @@ import java.util.Date;
 
 import hello.business.parser.DataPerDateParser;
 import hello.business.parser.DataPerTimeParser;
+import hello.repository.price.DayPriceRepository;
 import org.apache.http.client.utils.URIBuilder;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -31,6 +32,8 @@ public class JsoupBO {
 	DataPerDateParser dataPerDateParser;
 	@Autowired
 	DataPerTimeParser dataPerTimeParser;
+	@Autowired
+	private DayPriceRepository dayPriceRepository;
 
 	public void getDataPerTime(String stockCode, Integer page) {
 		try {

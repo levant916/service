@@ -5,10 +5,12 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 @Service
-public class DataPerTimeParser implements ElementsParser {
+public class DataPerTimeParser<Object> implements ElementsParser {
     @Override
-    public void parse(Elements elements) {
+    public List<Object> parse(Elements elements) {
         for(Element result : elements) {
             Elements priceRow = result.children();
             for(Element columnData : priceRow) {
@@ -21,5 +23,6 @@ public class DataPerTimeParser implements ElementsParser {
             }
             System.out.println();
         }
+        return null;
     }
 }
