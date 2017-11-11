@@ -1,6 +1,7 @@
 package hello.controller.price;
 
 import hello.repository.price.DayPrice;
+import hello.repository.price.DayPricePK;
 import hello.repository.price.DayPriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,7 +22,8 @@ public class DayPriceControllor {
 
 	@RequestMapping("/find")
 	public List<DayPrice> findByCode(@RequestParam(value = "code", required = true) String code) {
-		return dayPriceRepository.findByCode(code);
+//		return dayPriceRepository.findByCode(code);
+		return new ArrayList<>();
 	}
 
 	@RequestMapping("/save")
@@ -35,8 +38,7 @@ public class DayPriceControllor {
 		@RequestParam(value = "traceVolumn", defaultValue = "0") int traceVolumn) throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 
-		dayPriceRepository.save(new DayPrice(code, dateFormat.parse(date),
-			endPrice, increment, startPrice, maxPrice, minPrice, traceVolumn));
+		dayPriceRepository.save(new DayPrice(new DayPricePK(code,dateFormat.parse(date)),endPrice, increment, startPrice, maxPrice, minPrice, traceVolumn));
 		return "success";
 	}
 }

@@ -4,6 +4,7 @@ import hello.business.JsoupBO;
 import hello.business.model.Greeting;
 import hello.repository.price.DayPrice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,7 @@ public class GreetingController {
 			String.format(template, name));
 	}
 
-	@RequestMapping("/test")
+	@RequestMapping(value = "/test", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<DayPrice> test() {
 		return jsoupBO.getDataPerDate("006380", 1);
 	}
