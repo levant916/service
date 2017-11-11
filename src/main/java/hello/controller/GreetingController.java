@@ -2,11 +2,13 @@ package hello.controller;
 
 import hello.business.JsoupBO;
 import hello.business.model.Greeting;
+import hello.repository.price.DayPrice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -25,7 +27,7 @@ public class GreetingController {
 	}
 
 	@RequestMapping("/test")
-	public void test() {
-		//jsoupBO.getDataPerTime("asdf");
+	public List<DayPrice> test() {
+		return jsoupBO.getDataPerDate("006380", 1);
 	}
 }

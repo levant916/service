@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @RestController
 @RequestMapping("/price/day")
@@ -18,8 +19,8 @@ public class DayPriceControllor {
 	private DayPriceRepository dayPriceRepository;
 
 	@RequestMapping("/find")
-	public DayPrice findOne(@RequestParam(value = "code", required = true) String code) {
-		return dayPriceRepository.findOne(code);
+	public List<DayPrice> findByCode(@RequestParam(value = "code", required = true) String code) {
+		return dayPriceRepository.findByCode(code);
 	}
 
 	@RequestMapping("/save")
@@ -34,7 +35,7 @@ public class DayPriceControllor {
 		@RequestParam(value = "traceVolumn", defaultValue = "0") int traceVolumn) throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 
-		dayPriceRepository.save(DayPrice.of(code, dateFormat.parse(date),
+		dayPriceRepository.save(new DayPrice(code, dateFormat.parse(date),
 			endPrice, increment, startPrice, maxPrice, minPrice, traceVolumn));
 		return "success";
 	}

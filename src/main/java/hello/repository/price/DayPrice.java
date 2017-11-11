@@ -1,27 +1,30 @@
 package hello.repository.price;
 
-import lombok.AllArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Index;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(indexes = { @Index(name = "idx_dayprice_01", columnList = "code,date") })
-@AllArgsConstructor(staticName = "of")
+//@AllArgsConstructor(staticName = "of")
+@RequiredArgsConstructor
 public class DayPrice implements Serializable {
 	@Id
-	private String code;
-	@NonNull
-	private Date date;
-	private int endPrice;
-	private int increment;
-	private int startPrice;
-	private int maxPrice;
-	private int minPrice;
-	private int traceVolumn;
+	@GeneratedValue
+	private long dayPriceId;
+	@NonNull private String code;
+	@NonNull private Date date;
+	@NonNull private int incrementPrice;
+	@NonNull private int startPrice;
+	@NonNull private int endPrice;
+	@NonNull private int lowPrice;
+	@NonNull private int highPrice;
+	@NonNull private int tradeVolume;
+
+	public String toString() {
+		return String.join(" ", code, date.toString(), String.valueOf(incrementPrice));
+	}
 }
