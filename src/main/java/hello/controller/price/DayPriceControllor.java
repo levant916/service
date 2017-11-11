@@ -18,12 +18,12 @@ public class DayPriceControllor {
 	private DayPriceRepository dayPriceRepository;
 
 	@RequestMapping("/find")
-	public DayPrice findDayPrice(@RequestParam(value = "code", required = true) String code) {
+	public DayPrice findOne(@RequestParam(value = "code", required = true) String code) {
 		return dayPriceRepository.findOne(code);
 	}
 
 	@RequestMapping("/save")
-	public String saveDayPrice(
+	public String save(
 		@RequestParam(value = "code", required = true) String code,
 		@RequestParam(value = "date", required = true) String date,
 		@RequestParam(value = "endPrice", defaultValue = "0") int endPrice,

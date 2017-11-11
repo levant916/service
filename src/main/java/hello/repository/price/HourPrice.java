@@ -7,27 +7,26 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(indexes = { @Index(name = "idx_dayprice_01", columnList = "code,date") })
+@Table(indexes = { @Index(name = "idx_hourprice_01", columnList = "code,date") })
 @AllArgsConstructor(staticName = "of")
-public class DayPrice implements Serializable {
-
+public class HourPrice {
 	@Id
 	private String code;
 	@NonNull
 	private Date date;
 
-	private int endPrice;
-	private int increment;
-	private int startPrice;
-	private int maxPrice;
-	private int minPrice;
-	private int traceVolumn;
+	private Date contractTime;
+	private Integer price;
+	private Integer increment;
+	private Integer sellPrice;
+	private Integer purchasePrice;
+	private Integer tradeVolume;
+	private Integer variance;
 
-	public DayPrice() {
+	public HourPrice() {
+
 	}
-
 }
