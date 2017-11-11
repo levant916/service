@@ -4,7 +4,7 @@
 *.ivs
 .idea/
 .gradle/
-application.properties
+*.properties
 # generated files
 target/
 bin/
