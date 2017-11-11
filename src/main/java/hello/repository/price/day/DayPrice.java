@@ -1,40 +1,44 @@
 package hello.repository.price.day;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.NonNull;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
-//@Table(indexes = { @Index(name = "IDX_DAYPRICE_01", columnList = "day_price_id,date") })
 @Entity
+@Table(indexes = { @Index(name = "idx_dayprice_01", columnList = "code,date") })
 @AllArgsConstructor(staticName = "of")
-//@IdClass(DayPrice.PK.class)
 public class DayPrice implements Serializable {
 
-	@EmbeddedId
-	private PK pk;
+	@Id
+	private String code;
+	@NonNull
+	private Date date;
 
-	private Integer endPrice;
-	private Integer increment;
-	private Integer startPrice;
-	private Integer maxPrice;
-	private Integer minPrice;
-	private Integer traceVolumn;
+	private int endPrice;
+	private int increment;
+	private int startPrice;
+	private int maxPrice;
+	private int minPrice;
+	private int traceVolumn;
 
-//	@Embeddable
-//	public static class PK implements Serializable {
-//		private static final long serialVersionUID = 1L;
-//
-//		private String code;
-//		private Date date;
-//
-//		public static PK of(String code, Date date) {
-//			PK pk = new PK();
-//			pk.code = code;
-//			pk.date = date;
-//			return pk;
-//		}
+	public DayPrice() {
+	}
+
+//	public DayPrice(String code, Date date) {
+//		this.code = code;
+//		this.date = date;
+//		endPrice = 1;
+//		increment = 1;
+//		startPrice = 1;
+//		maxPrice = 1;
+//		minPrice = 1;
+//		traceVolumn = 1;
 //	}
+
 }
