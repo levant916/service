@@ -26,6 +26,5 @@ public class GreetingController {
 
     @RequestMapping("/test")
     public void test() {
-        jsoupBO.getDataPerTime("asdf");
     }
 }

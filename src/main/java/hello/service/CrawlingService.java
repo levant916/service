@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import hello.business.JsoupBO;
 
+import java.util.Date;
+
 /**
  *
  *
@@ -16,4 +18,7 @@ public class CrawlingService {
 	@Autowired
 	private JsoupBO jsoupBO;
 
+	public void getDataPerDate(String code, Date targetDate) {
+
+	}
 }
