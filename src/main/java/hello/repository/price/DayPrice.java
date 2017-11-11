@@ -1,4 +1,4 @@
-package hello.repository.price.day;
+package hello.repository.price;
 
 import lombok.AllArgsConstructor;
 import lombok.NonNull;

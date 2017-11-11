@@ -1,7 +1,7 @@
-package hello.controller;
+package hello.controller.price;
 
-import hello.repository.price.day.DayPrice;
-import hello.repository.price.day.DayPriceRepository;
+import hello.repository.price.DayPrice;
+import hello.repository.price.DayPriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 @RestController
-@RequestMapping("/day")
+@RequestMapping("/price/day")
 public class DayPriceControllor {
 
 	@Autowired
